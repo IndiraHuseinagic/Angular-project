@@ -1,0 +1,41 @@
+<a [routerLink]="['/products/', product.key]" class="product">
+
+  <!--Product Card-->
+  <div *ngIf="product.imageUrl" class="card">
+    <div class="pb-4">
+
+      <!--Sale-->
+      <span class="sale small" *ngIf="product.price!== product.salePrice">SALE %</span>
+
+      <!--Favorite-->
+      <i class="fa float-right" 
+         [class.fa-heart]="isFavorite()" 
+         [class.fa-heart-o]="!isFavorite()"
+         (click)="addRemoveFavorites(); $event.preventDefault(); $event.stopPropagation(); ">
+      </i>
+    </div>
+    
+    <!--Image-->
+    <img class="card-img-top" [src]="product.imageUrl" alt="{{ product.title }}">
+   
+     
+    <div class="card-body px-0">
+      
+      <!--Title-->
+      <p class="card-title">{{ product.title }}</p>
+
+      <!--Price-->
+      <p *ngIf="product.price===product.salePrice; else sale" class="card-text"> {{ product.price | currency: 'EUR' }}
+      </p>
+      <ng-template #sale>
+        <p class="card-text sale-price">
+          <span> {{ product.salePrice | currency: 'EUR' }} </span>
+          <s>{{ product.price | currency: 'EUR' }}</s>
+        </p>
+      </ng-template>
+
+    </div>
+
+  </div>
+
+</a>

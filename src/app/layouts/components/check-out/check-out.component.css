@@ -1,0 +1,28 @@
+.circle {
+    border: 2px solid #eee;
+    border-radius: 100%;
+    background-color: #fff;
+    color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 6px 10px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+hr.line {
+    position: relative;
+    top: 15px;
+    width: 15%;
+    margin: 0;
+}
+
+.active {
+    background-color: #616161;
+    border:2px solid #616161;
+    color: #fff;
+}
+
+.close-check-out {
+    font-size: 30px;
+}
+

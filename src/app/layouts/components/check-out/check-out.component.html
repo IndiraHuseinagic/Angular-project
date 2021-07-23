@@ -1,0 +1,32 @@
+<div class="app-container mt-2">
+
+  <!--Close-->
+  <div class="clearfix">
+    <a class="close-check-out float-right" [routerLink]="['/shopping-cart']">&#10005;</a>
+  </div>
+
+  <div class="center d-flex">
+
+    <!--Shipping-->
+    <div class="center">
+      <a class="circle" [routerLink]="['./shipping']" routerLinkActive="active"> 1 </a>
+      <div class="pt-2 small">Shipping</div>
+    </div>
+    <hr class="line">
+
+    <!--Payment-->
+    <div class="center">
+      <a class="circle" [routerLink]="['./payment']" routerLinkActive="active"> 2 </a>
+      <div class="pt-2 small">Payment</div>
+    </div>
+    <hr class="line">
+
+    <!--Summary-->
+    <div class="center">
+      <a class="circle" [routerLink]="['./summary']" routerLinkActive="active"> 3 </a>
+      <div class="pt-2 small">Summary</div>
+    </div>
+
+  </div>
+</div>
+<hr class="w-100 shadow-sm mb-0">

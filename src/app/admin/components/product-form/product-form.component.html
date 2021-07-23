@@ -1,0 +1,93 @@
+<a backButton class="back-nav"> &lt; Back</a>
+
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <!--Title-->
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control">
+            </div>
+
+            <!--Brand-->
+            <div class="form-group">
+                <label for="brand">Brand</label>
+                <input [(ngModel)]="product.brand" name="brand" id="brand" type="text" class="form-control">
+            </div>
+
+            <!--Price-->
+            <div class="form-group">
+                <label for="price">Price</label>
+                <div class="input-group-prepend">
+                    <span class="input-group-text">€</span>
+                    <input [(ngModel)]="product.price" name="price" id="price" type="text" class="form-control">
+                </div>
+            </div>
+            
+            <!--Sale Price-->
+            <div class="form-group">
+                <label for="salePrice">Sale Price</label>
+                <div class="input-group-prepend">
+                    <span class="input-group-text">€</span>
+                    <input [(ngModel)]="product.salePrice" name="salePrice" id="salePrice" type="text"
+                        class="form-control">
+                </div>
+            </div>
+
+            <!--Color-->
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input [(ngModel)]="product.color" name="color" id="color" type="text" class="form-control">
+            </div>
+
+            <!--Category-->
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select [(ngModel)]="product.category" name="category" id="category" class="form-control">
+                    <option value=""></option>
+                    <option *ngFor="let c of categories$ | async" [value]="c.key">{{c.name}}</option>
+                </select>
+            </div>
+
+            <!--Size-->
+            <div class="form-group">
+                <label for="sizes">Sizes</label>
+                <div class="row">
+                    <div class="col-md-6 mb-4 mb-md-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Min</span>
+                            <input [(ngModel)]="product.minSize" name="minSize" type="number" class="form-control"
+                                min="21" max="46">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Max</span>
+                            <input [(ngModel)]="product.maxSize" name="maxSize" type="number" class="form-control"
+                                min="21" max="46">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Image-->
+            <div class="form-group mb-4">
+                <label for="imageUrl">Image URL</label>
+                <input [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control">
+            </div>
+
+        </div>
+
+        <!--Product Card-->
+        <div class="col-md-6">
+            <product-card [product]="product"></product-card>
+        </div>
+    </div>
+
+    <!--Buttons Delete/Save-->
+    <div class="d-flex justify-content-center justify-content-md-start">
+        <button class="btn btn-primary mr-4 px-5">Save</button>
+        <button type="button" (click)="delete()" class="btn btn-secondary px-5">Delete</button>
+    </div>
+
+</form>

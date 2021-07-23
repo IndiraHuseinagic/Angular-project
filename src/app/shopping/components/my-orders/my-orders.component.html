@@ -1,0 +1,19 @@
+<h1>My Orders</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead> 
+  <tbody>
+    <tr *ngFor="let order of orders$ | async">
+      <td>{{ order.shipping.firstName }} {{ order.shipping.lastName }}</td>
+      <td>{{ order.datePlaced}}</td>
+      <td>
+        <a [routerLink]="['/my/orders/', order.key]">View</a>
+      </td>
+    </tr>
+  </tbody> 
+</table>

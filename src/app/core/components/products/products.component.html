@@ -1,0 +1,28 @@
+<div class="row">
+
+    <!--Category Nav-->
+    <div class="col-2 pt-5 mt-4 d-none d-md-inline text-uppercase">
+        <p class="font-weight-bold">Categories</p>
+        <product-categories></product-categories> 
+    </div>
+
+    <div class="col"> 
+        <h1 class="text-capitalize"> {{category}} </h1>    
+        
+        <!--Filters-->
+        <product-filter></product-filter>
+        
+        <p> Results: {{ (products$ | async)?.length }} products </p>
+
+        <!--Products-->
+        <div class="row">
+           <div *ngFor="let product of products$ | async" class="col-6 col-md-4">
+            <product-card [product]="product" [favorites]="favorites"></product-card>     
+           </div>
+        </div>     
+</div>
+
+  
+
+ 
+

@@ -1,0 +1,331 @@
+ <!--Filtering - Large Resolution-->    
+<div class="row my-4">
+        
+ <!--Size-->
+  <div class="col d-none d-md-inline"> 
+    <div ngbDropdown #sizeDrop="ngbDropdown">
+      <button class="btn btn-filter" ngbDropdownToggle>Size
+        <i class="fa float-right mt-1" [ngClass]="{
+          'fa-chevron-down': !sizeDrop.isOpen(), 
+          'fa-chevron-up':   sizeDrop.isOpen()}">
+         </i>
+      </button>  
+      <div class="shadow" ngbDropdownMenu>
+        <div class="list-scroll">
+          <div class="form-check float-left col-4" *ngFor="let size of allSizes">  
+            <label class="container">{{size}}  
+            <input 
+            #checkboxes   
+            id="size"   
+            type="checkbox" 
+            class="form-check-input"
+            name="size"
+            value="{{size}}"
+            (change)="onChange()">
+            <span class="checkmark"></span>
+          </label>            
+          </div> 
+        </div>
+          <hr>
+          <button class="btn btn-secondary btn-block btn-apply" 
+                 (click)="$event.stopPropagation(); sizeDrop.close();">Apply Filter
+          </button>  
+     </div>
+    </div>
+  </div>
+
+  <!--Brand-->
+  <div class="col d-none d-md-inline">
+    <div ngbDropdown #brandDrop="ngbDropdown">
+      <button class="btn btn-filter" ngbDropdownToggle>Brand
+        <i class="fa float-right mt-1" [ngClass]="{
+          'fa-chevron-down':  !brandDrop.isOpen(), 
+          'fa-chevron-up':    brandDrop.isOpen()}">
+         </i>
+      </button>
+      <div class="shadow" ngbDropdownMenu>
+        <div class="list-scroll">
+        <div class="form-check" *ngFor="let brand of allBrands"> 
+          <label class="container">{{brand}}
+          <input 
+          #checkboxes
+          id="brand"
+          type="checkbox" 
+          class="form-check-input"
+          name="brand"
+          value="{{brand}}"
+          (change)="onChange()">
+          <span class="checkmark"></span>
+          </label>
+        </div> 
+        </div>
+        <hr>
+      <button 
+      class="btn btn-secondary btn-block btn-apply" 
+      (click)="$event.stopPropagation(); brandDrop.close();">Apply Filter</button>
+      </div>
+    </div>
+  </div>
+
+  <!--Color-->
+  <div class="col d-none d-md-inline">
+    <div ngbDropdown #colorDrop="ngbDropdown">
+      <button class="btn btn-filter" ngbDropdownToggle>Color
+        <i class="fa float-right mt-1" [ngClass]="{
+          'fa-chevron-down': !colorDrop.isOpen(), 
+          'fa-chevron-up':    colorDrop.isOpen()}">
+         </i>
+      </button>
+      <div  class="shadow" ngbDropdownMenu>
+        <div class="list-scroll">
+        <div class="form-check" *ngFor="let color of allColors"> 
+          <label class="container">{{color}}
+            <input 
+             #checkboxes 
+             id="{{color}}" 
+             type="checkbox" 
+             class="form-check-input" 
+             name="color" 
+             value="{{color}}" 
+             (change)="onChange()">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        </div> 
+        <hr>
+      <button 
+      class="btn btn-secondary btn-block btn-apply" 
+      (click)="$event.stopPropagation(); colorDrop.close();">Apply Filter</button>
+      </div>
+    </div>
+  </div>
+
+  <!--Price-->
+  <div class="col d-none d-md-inline">
+    <div ngbDropdown #priceDrop="ngbDropdown">
+      <button class="btn btn-filter" ngbDropdownToggle>Price
+        <i class="fa float-right mt-1" [ngClass]="{
+          'fa-chevron-down': !priceDrop.isOpen(), 
+          'fa-chevron-up':    priceDrop.isOpen()}">
+         </i>
+      </button>
+      <div  class="shadow" ngbDropdownMenu>
+        <div class="form-check" *ngFor="let price of allPrices">
+          <label class="container">{{price}}
+          <input  
+          #checkboxes
+          id="price"
+          type="checkbox" 
+          class="form-check-input"
+          name="price"
+          value="{{price}}"
+          (change)="onChange()">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <hr>
+      <button 
+      class="btn btn-secondary btn-block btn-apply" 
+      (click)="$event.stopPropagation(); priceDrop.close();">Apply Filter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <!--Filter Button for Modal Toggle--> 
+      <div class="filtering col-6">
+        <button class="btn d-md-none btn-outline-secondary btn-filter-toggle btn-block mb-4" (click)="openModal()">
+          <div class="text-center">
+            <i class="fa fa-sliders"></i> Filter
+          </div>
+          
+        </button>
+      </div>
+  
+  <!--Sort Button-->
+      <div class="sorting col-6 col-md-3 ml-auto" ngbDropdown>     
+          <button class="btn btn-sort pl-4 btn-block" id="dropdownSort" ngbDropdownToggle>
+            <div class="float-md-right">
+              {{ selectedSort }} <i class="fa fa-chevron-down mt-1 pl-2"></i>
+            </div>
+          </button>
+          <div class="shadow" ngbDropdownMenu aria-labelledby="dropdownSort">
+           <button ngbDropdownItem value="List (A-Z)" (click)="onSort($event)" >Product list (A-Z)</button>
+            <button ngbDropdownItem value="List (Z-A)"(click)="onSort($event)" >Product list (Z-A)</button>
+            <button ngbDropdownItem value="Low-High" (click)="onSort($event)" >Price (Low to High)</button>
+            <button ngbDropdownItem value="High-Low"(click)="onSort($event)" >Price (High to Low)</button>
+          </div>
+      </div>
+  </div>
+  
+  <!--Delete-->
+
+      <!--Delete All-->
+       <span *ngIf="isFiltered">
+          <button class="btn btn-light btn-delete" (click)="deleteAllFilters()"> Delete All Filters <span>&times;</span></button>
+       </span>
+
+     <!--Delete Size-->
+       <span *ngFor="let size of sizes">
+            <button class="btn btn-light btn-delete" (click)="deleteFilter(size)" >Size: {{size}} <span>&times;</span></button>
+       </span>
+
+     <!--Delete Brand-->
+       <span *ngFor="let brand of brands">
+            <button class="btn btn-light btn-delete" (click)="deleteFilter(brand)" >Brand: {{brand}} <span>&times;</span></button>
+       </span>
+
+     <!--Delete Color-->
+       <span *ngFor="let color of colors">
+            <button class="btn btn-light btn-delete" (click)="deleteFilter(color)" >Color: {{color}} <span>&times;</span></button>
+       </span>
+
+     <!--Delete Price-->
+       <span *ngFor="let price of prices">
+            <button class="btn btn-light btn-delete" (click)="deleteFilter(price)" >Price: {{price}} <span>&times;</span></button>
+       </span>
+  
+
+<!--Modal for Filtering - Mobile Resolution-->
+<div id="modal-filter" class="d-none">
+  <div class="mmodal bg-white">
+
+    <!--Modal Header-->
+    <div class="mmodal-header d-flex">
+        <h4 class="mr-auto my-auto">Filter</h4>
+        <button type="button" class="close ml-auto my-auto" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <!--Modal Body-->
+    <div class="mmodal-body">
+    <hr class="mt-0">
+
+      <!--Size-->
+      <div ngbDropdown #sizeDropMob="ngbDropdown">
+        <button ngbDropdownToggle class="btn-filter-modal">Size
+          <i class="fa float-right mt-1" [ngClass]="{
+            'fa-chevron-right': !sizeDropMob.isOpen(), 
+            'fa-chevron-up':   sizeDropMob.isOpen()}"> 
+           </i>
+          </button>
+        <div ngbDropdownMenu>
+          <div class="row ml-1">
+            <div class="form-check col-4" *ngFor="let size of allSizes"> 
+              <label class="container">{{ size }}   
+              <input 
+              #checkboxes   
+              id="size"   
+              type="checkbox" 
+              class="form-check-input"
+              name="size"
+              value="{{size}}"
+              (change)="onChange()">
+              <span class="checkmark"></span>
+              </label>             
+            </div> 
+          </div>
+         </div>  
+      </div>
+      <hr>
+      
+      <!--Brand-->
+      <div ngbDropdown #brandDropMob="ngbDropdown">
+        <button ngbDropdownToggle class="btn-filter-modal">Brand
+          <i class="fa float-right mt-1" [ngClass]="{
+            'fa-chevron-right':  !brandDropMob.isOpen(), 
+            'fa-chevron-up':    brandDropMob.isOpen()}">
+           </i>
+          </button>
+        <div ngbDropdownMenu>
+          <div class="row ml-1">
+           <div class="form-check col-6" *ngFor="let brand of allBrands"> 
+            <label class="container">{{ brand }}
+            <input 
+            #checkboxes
+            id="brand"
+            type="checkbox" 
+            class="form-check-input"
+            name="brand"
+            value="{{brand}}"
+            (change)="onChange()">
+            <span class="checkmark"></span>
+          </label>
+          </div> 
+        </div>
+        </div>
+      </div>
+      <hr>
+    
+      <!--Color-->
+      <div ngbDropdown #colorDropMob="ngbDropdown">
+        <button ngbDropdownToggle class="btn-filter-modal">Color
+          <i class="fa float-right mt-1" [ngClass]="{
+            'fa-chevron-right': !colorDropMob.isOpen(), 
+            'fa-chevron-up':    colorDropMob.isOpen()}">
+           </i>
+          </button>
+        <div ngbDropdownMenu>
+          <div class="row ml-1">
+           <div class="form-check col-6" *ngFor="let color of allColors"> 
+            <label class="container">{{ color }}
+            <input 
+            #checkboxes
+            id="{{ color }}"
+            type="checkbox" 
+            class="form-check-input"
+            name="color"
+            value="{{color}}"
+            (change)="onChange()">
+            <span class="checkmark"></span>
+          </label>
+          </div>
+        </div>
+        </div>
+      </div>
+      <hr>
+   
+      <!--Price-->
+      <div ngbDropdown #priceDropMob="ngbDropdown">
+        <button ngbDropdownToggle class="btn-filter-modal" >Price
+          <i class="fa float-right mt-1" [ngClass]="{
+            'fa-chevron-right': !priceDropMob.isOpen(), 
+            'fa-chevron-up':    priceDropMob.isOpen()}">
+           </i>
+          </button>
+        <div ngbDropdownMenu>
+          <div class="ml-1">
+          <div class="form-check" *ngFor="let price of allPrices">
+            <label class="container">{{ price }}
+            <input  
+            #checkboxes
+            id="price"
+            type="checkbox" 
+            class="form-check-input"
+            name="price"
+            value="{{price}}"
+            (change)="onChange()">
+            <span class="checkmark"></span>
+          </label>
+          </div>
+        </div>
+        </div>
+      </div>
+      <hr class="mb-0">
+    </div>
+    
+    <!--Modal Footer-->
+    <div class="mmodal-footer">
+      <button  class="btn btn-secondary btn-block btn-apply" (click)="closeModal()">Apply Filter</button>
+    </div>   
+</div>
+<!--Modal Backdrop-->
+<div class="mmodal-backdrop" (click)="closeModal()"></div>
+</div>
+
+
+
+
+

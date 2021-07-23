@@ -1,0 +1,91 @@
+/****************Navbar Brand****************/
+.navbar-brand {
+    color: #000;
+    font-weight: 800;
+    font-size: 25px;
+    cursor: pointer;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+.navbar-brand .first-letter {
+    color: #F5C965;
+    text-shadow:
+       0 0 2px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+       0 0 2px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/****************Navbar Link****************/
+.navbar-nav .nav-link {
+    color: #000;
+}
+
+a.main-nav:hover {
+    text-decoration: underline;
+}
+
+/****************Navbar Toggler****************/
+.navbar-toggler {
+    border: 0;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(0,0,0)' stroke-linecap='square' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/****************Search****************/
+input.search {
+    border-radius: 0;
+    border-color: #000;
+    padding-right: 5rem;
+}
+input.search:focus {
+    border: 2px solid #000;
+}
+
+.btn-search:focus, 
+.btn-search:hover,
+.btn-search:active  {
+    background-color: #000!important;
+}
+
+
+/****************Cart/Favorite Circle****************/
+.circle {
+    font-size: 12px;
+    background-color: #000;
+    color: #F5C965;
+    vertical-align: super;
+    border-radius: 100%;
+    padding: 2px 5px 2px 2px;
+}
+
+/****************Third Row****************/
+.third-nav {
+    background-color: #000;
+    color: #fff;
+    padding: 5px 0;
+}
+.phone {
+    background-color: #000;
+    color: #fff;
+}
+
+/****************Modal Navbar****************/
+.modal-nav .mmodal {
+    width: 70vw;
+    height: 80vh;
+    top: 0;
+    left: 0;
+}
+
+.close {
+    font-size: 50px;
+    font-weight:300;
+}
+
+
+
+
+
+

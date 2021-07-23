@@ -1,0 +1,26 @@
+/*************Carousel***************/  
+.slide-image {
+    padding: 50px;
+    justify-content:center;
+}
+
+/*************Favorite***************/
+.fa-heart, .fa-heart-o {
+    color: #ccc;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 50;
+    position: relative;
+} 
+
+/***************Custom Modal*****************/   
+.modal-image {
+    width: 90%;
+    height: auto;
+    padding-bottom: 30px;
+}
+
+.zoom {
+    position: relative;
+    top: 2vh;
+}

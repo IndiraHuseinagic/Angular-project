@@ -1,0 +1,21 @@
+/************Increase/Decrease Buttons***********/
+.btn-light {
+    border: 1px solid #ccc;
+    border-radius: 0;
+    width: 40px;
+}
+
+/********************Quantity********************/
+.quantity {
+    padding: 6px 20px;
+    border: 1px solid #ccc;
+}
+
+/*****************Delete Button*****************/
+.btn-delete {
+    border: 0;
+    background-color: transparent;
+}
+.btn-delete:hover {
+    color: #616161;
+}

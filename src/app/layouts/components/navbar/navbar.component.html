@@ -1,0 +1,186 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top p-0">
+
+  <div class="flex-column p-0">
+
+    <!--First row-->
+    <ul class="navbar-nav list-group-horizontal first-nav bg-light py-1 app-container">
+
+      <!--Toggler for modal-->
+      <li class="navbar-toggler-right my-auto">
+        <button class="navbar-toggler p-0" type="button" (click)="openModal()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </li>
+
+      <!--Brand Name-->
+      <li class="navbar-brand mx-auto ml-md-0 my-auto" routerLink="/">
+        <span class="first-letter">X</span>Shoes
+      </li>
+
+      <!--Search-->
+      <li class="nav-item m-auto d-none d-md-inline">
+        <div class="input-group">
+          <input #searchText (keyup.enter)="searchNavigate(searchText.value)" type="text" class="form-control search"
+            placeholder="Search" aria-label="search">
+
+          <button class="btn btn-secondary btn-search" type="button" (click)="searchNavigate(searchText.value)"><i
+              class="fa fa-search"></i></button>
+        </div>
+      </li>
+
+      <!--Favorites-->
+      <li class="nav-item my-auto">
+        <a class="nav-link d-flex flex-column" routerLink="/favorites">   
+              <i class="fa fa-heart-o fa-lg text-center">
+                <span class="circle" *ngIf="(favorites$ | async)?.length > 0">
+                {{ (favorites$ | async)?.length }}</span></i>
+          <span class="d-none d-lg-inline small">Favorites</span>
+        </a>
+      </li>
+
+      <!--Shopping Cart-->
+      <li class="nav-item my-auto mx-3 mx-sm-4">
+        <a class="nav-link d-flex flex-column" routerLink="/shopping-cart">
+          <i class="fa fa-shopping-cart fa-lg text-center">
+            <span *ngIf="cart$ |async as cart">
+            <span *ngIf="cart.totalItemsCount > 0" class="circle"> {{ cart.totalItemsCount}}</span>
+            </span>
+           </i>
+          <span class="d-none d-lg-inline small">Shopping Cart</span>
+        </a>
+      </li>
+
+      <!--User Account-->
+      <ng-template #anonymousUser>
+        <li class="nav-item my-auto">
+          <a class="nav-link d-flex flex-column" routerLink="/login">
+            <i class="fa fa-user-o fa-lg text-center"></i>
+            <span class="d-none d-lg-inline small">Account</span>
+          </a>
+        </li>
+      </ng-template>
+
+      <li ngbDropdown display="dynamic" *ngIf="appUser; else anonymousUser" class="nav-item dropdown my-auto">
+        <a ngbDropdownToggle class="nav-link d-flex flex-column dropdown-toggle" id="dropdown01"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-user fa-lg text-center"></i>
+          <span class="d-none d-lg-inline small">{{ appUser.name }}</span>
+        </a>
+        <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <li><a class="dropdown-item" routerLink="/my/orders">My Orders</a></li>
+          <ng-container *ngIf="appUser.isAdmin">
+            <li><a class="dropdown-item" routerLink="/admin/orders">All Orders</a></li>
+            <li><a class="dropdown-item" routerLink="/admin/products">Manage Products</a></li>
+          </ng-container>
+          <li><a class="dropdown-item" (click)="logout()">Log Out</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!--Second row-->
+    <ul class="navbar-nav justify-content-center w-100 text-uppercase second-nav pb-2 px-3 app-container">
+
+      <!--Search-->
+      <li class="nav-item mr-auto ml-auto d-md-none pb-2">
+        <div class="input-group">
+          <input #searchTextMob (keyup.enter)="searchNavigate(searchTextMob.value)" type="text" class="form-control search"
+            placeholder="Search" aria-label="search">
+          <div class="input-group-append">
+            <button class="btn btn-secondary btn-search" type="button" (click)="searchNavigate(searchTextMob.value)"><i
+                class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </li>
+
+      <!--Navigation-->
+      <li class="nav-item d-none d-md-inline">
+        <a class="nav-link main-nav" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item d-none d-md-inline">
+        <a class="nav-link main-nav" routerLink="/category/women" queryParamsHandling="merge">Women</a>
+      </li>
+      <li class="nav-item d-none d-md-inline">
+        <a class="nav-link main-nav" routerLink="/category/men" queryParamsHandling="merge">Men</a>
+      </li>
+      <li class="nav-item d-none d-md-inline">
+        <a class="nav-link main-nav" routerLink="/category/kids" queryParamsHandling="merge">Kids</a>
+      </li>
+      <li class="nav-item d-none d-md-inline">
+        <a class="nav-link main-nav" routerLink="/category/accessories" queryParamsHandling="merge">Accessories</a>
+      </li>
+      <li class="nav-item d-none d-md-inline">
+        <a class="nav-link main-nav" routerLink="/brands">Brands</a>
+      </li>
+      <li class="nav-item d-none d-md-inline">
+        <a class="nav-link main-nav" routerLink="/sale">Sale</a>
+      </li>
+    </ul>
+
+    <!--Third row-->
+    <ul class="navbar-nav justify-content-around list-group-horizontal third-nav app-container small">
+      <li class="middle d-none d-md-flex">&#10003; Free Delivery & Returns</li>
+      <li class="middle d-none d-md-flex">&#10003; Fast Delivery</li>
+      <li class="middle d-none d-md-flex">&#10003; High Customer Satisfaction</li>
+      <li> &#10003; Free Call 
+        <a class="phone" href="tel:+49 1234567891"> 
+          <i class="contact fa fa-phone pl-2"></i>
+          +49 1234567891         
+        </a>
+      </li>    
+    </ul>
+
+  </div>
+</nav>
+
+<!--Navigation in modal-->
+<div id="modal-navigation" class="d-none modal-nav">
+  <div class="mmodal bg-white">
+
+    <!--Modal Header-->
+    <div class="mmodal-header d-flex">
+      <h4 class="my-auto">Menu</h4>
+      <button type="button" class="close ml-auto my-auto" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <hr class="m-0 p-0">
+    
+    <!--Modal Body-->
+    <div class="mmodal-body p-0">
+      <!--Navigation-->
+      <ul class="modal-body navbar-nav text-uppercase p-0">
+        <li class="nav-item pl-4">
+          <a class="nav-link main-nav" routerLink="/" (click)="closeModal()">Home</a>
+        </li>
+        <hr class="m-0 p-0">
+        <li class="nav-item pl-4">
+          <a class="nav-link main-nav" routerLink="/category/women" queryParamsHandling="merge" (click)="closeModal()">Women Shoes</a>
+        </li>
+        <hr class="m-0 p-0">
+        <li class="nav-item pl-4">
+          <a class="nav-link main-nav" routerLink="/category/men" queryParamsHandling="merge" (click)="closeModal()">Men Shoes</a>
+        </li>
+        <hr class="m-0 p-0">
+        <li class="nav-item pl-4">
+          <a class="nav-link main-nav" routerLink="/category/kids" queryParamsHandling="merge" (click)="closeModal()">Kids Shoes</a>
+        </li>
+        <hr class="m-0 p-0">
+        <li class="nav-item pl-4">
+          <a class="nav-link main-nav" routerLink="/category/accessories" queryParamsHandling="merge"
+            (click)="closeModal()">Accessories</a>
+        </li>
+        <hr class="m-0 p-0">
+        <li class="nav-item pl-4">
+          <a class="nav-link main-nav" routerLink="/sale" (click)="closeModal()">Sale</a>
+        </li>
+        <hr class="m-0 p-0">
+        <li class="nav-item pl-4">
+          <a class="nav-link main-nav" routerLink="/brands" (click)="closeModal()">Brands</a>
+        </li>
+        <hr class="m-0 p-0">
+       </ul>
+    </div>
+</div>
+<!--Modal Backdrop-->
+<div class="mmodal-backdrop" (click)="closeModal()"></div>
+</div>

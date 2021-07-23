@@ -1,0 +1,14 @@
+<h1>Search</h1>                 
+<hr>   
+
+<!--Filters-->
+<product-filter></product-filter>
+
+<p> Results: {{ (products$ | async)?.length }} products </p>
+
+<!--Products-->
+<div class="row">
+        <div *ngFor="let product of products$ | async" class="col-6 col-md-3">
+             <product-card [product]="product" [favorites]="favorites"></product-card>     
+        </div>   
+</div>

@@ -1,0 +1,64 @@
+<ngb-carousel #slideImages [interval]="0">
+  <ng-template ngbSlide *ngFor="let slide of slides" [id]="slide.id">
+
+    <!--Favorite-->
+    <i class="fa fa-lg float-right mt-4 mr-4 pr-4" 
+       [class.fa-heart]="isFavorite()" 
+       [class.fa-heart-o]="!isFavorite()"
+      (click)="addRemoveFavorites(); $event.preventDefault(); $event.stopPropagation();">
+    </i>
+
+    <!--Big Slide Image-->
+    <div class="text-center">
+      <a (click)="openModal(slide.id)">
+        <img [src]="slide.url" class="img-fluid slide-image">
+      </a>
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+
+<!--Small 2 or 4 images-->
+<div class="row">
+  <a *ngFor="let slide of slides" class="col-3" (click)="goToSlide(slide.id)">
+    <img [src]="slide.url" class="img-fluid">
+  </a>
+</div>
+
+<!--Modal for Product Images-->
+<div id="modal-images" class="d-none">s
+  <div class="mmodal bg-white">
+
+    <!--Modal Header-->
+    <div class="mmodal-header d-flex">
+        <button type="button" class="close ml-auto pr-2 pr-md-4 my-auto" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+    </div>
+    
+    <!--Modal Body-->
+    <div class="mmodal-body p-0">
+      
+      <ngb-carousel #zoomImages [interval]="0" class="zoom">
+        <ng-template ngbSlide current= "slide3" *ngFor="let slide of slides" [id]="slide.id">
+          <div class="text-center">
+            <img [src]="slide.url" class="img-fluid modal-image">
+          </div>
+        </ng-template>
+      </ngb-carousel>
+
+    </div>
+     
+</div>
+<!--Modal Backdrop-->
+<div class="mmodal-backdrop" (click)="closeModal()"></div>
+</div>
+
+
+
+
+
+
+
+
+

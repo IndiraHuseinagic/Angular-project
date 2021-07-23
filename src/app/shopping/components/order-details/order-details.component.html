@@ -1,0 +1,10 @@
+<a backButton class="back-nav"> &lt; Back</a>
+
+<div *ngIf="orders$ | async as order">
+<order-data 
+       [items]="order.items"
+       [totalPrice]="order.totalPrice" 
+       [shipping]="order.shipping"
+       [payment]="order.payment">
+</order-data>
+</div>

@@ -1,0 +1,17 @@
+<div><strong>Quantity:</strong></div>
+<div class="d-flex justify-content-start justify-content-md-center mt-2">
+
+  <!--Increase-->
+  <button class="btn btn-light" (click)="decreaseQuantity()"> - </button> 
+
+  <!--Quantity-->
+  <div class="quantity">{{ shoppingCart.getQuantity(product) }}</div>    
+  
+  <!--Decrease-->
+  <button class="btn btn-light" (click)="increaseQuantity()">+</button> 
+</div>
+
+<!--Delete-->
+<button class="btn btn-delete" (click)="deleteQuantity()"><i class="fa fa-trash-o"></i> Delete</button>
+
+            

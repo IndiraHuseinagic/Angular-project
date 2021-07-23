@@ -1,0 +1,102 @@
+<a backButton class="back-nav"> &lt; Back</a>
+
+<div class="row">
+
+  <!--Carousel-->
+  <div class="col-md-6">
+       <product-images [product]="product" [favorites]="favorites" [slides]="slides"></product-images>  
+  </div>
+
+  <!--Product Info-->
+  <div class="col-md-6 col-lg-4">
+
+    <!--Title-->
+    <h4 class="mt-3">{{ product.title }}</h4>
+
+    <!--Price-->
+    <div *ngIf="product.price!==product.salePrice">
+      <p class="price-text sale-price">
+        <span> {{ product.salePrice | currency: 'EUR' }} </span>
+        <s>{{ product.price | currency: 'EUR' }}</s>
+      </p>
+    </div>
+    <p *ngIf="product.price===product.salePrice" class="price-text"> {{ product.price | currency: 'EUR' }}</p>
+    <hr>
+
+    <!--Color-->
+    <p>Color: {{ product.color }}</p>
+
+    <!--Size-->
+    <p>Size: {{ selectedSize }}</p>
+    <button 
+      class="btn btn-outline-primary m-1" 
+      *ngFor="let size of sizes" 
+      (click)="sizeSelect(size)"
+      [class.selected]="selectedSize===size">{{size}}
+    </button>
+
+    <!--Buttons-->
+    <div class="mt-5">Fast delivery - 3⁠-⁠5 working days
+      <button class="btn btn-primary btn-block my-2" (click)="addToCart(); open(content)">
+        <i class="fa fa-shopping-cart"></i> Add to Cart
+      </button>
+      <button class="btn btn-outline-primary btn-block mb-3" (click)="addRemoveFavorites()">
+        <div *ngIf="!isFavorite()">
+          <i class="fa fa-heart-o"></i> Add to Favorites
+        </div>
+        <div *ngIf="isFavorite()">
+          <i class="fa fa-heart"></i> Product in Favorites
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--Modal for added Product-->
+<ng-template #content let-modal>
+
+  <!--Modal Header-->
+  <div class="modal-header">
+    <h4 class="modal-title mx-auto" id="modal-basic-title">Your Shopping Cart</h4>
+    <button type="button" class="close mx-0" aria-label="Close" (click)="modal.dismiss('Cross click')"> <span
+        aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!--Modal Body-->
+  <div class="modal-body">
+    <div class="info-text p-2 p-sm-4"><i class="fa fa-check"></i> Product is added in your Shopping Cart</div>
+
+    <!--Product info-->
+    <div class="row">
+      <div class="col-sm-4 text-center d-none d-sm-block">
+        <img class="modal-image" *ngIf="product.imageUrl" [src]="product.imageUrl" alt="{{ product.title }}">
+      </div>
+      <div class="col-sm-6 modal-description">
+        <strong>{{ product.title }} </strong>
+        <div class="mt-2"><strong>Size:</strong> {{ selectedSize }}</div>
+        <div><strong>Color: </strong> {{ product.color }}</div>
+        <div class="d-none d-sm-block"><strong>Product No:</strong> {{ productId }}</div>
+        <div><strong>Brand:</strong> {{ product.brand }}</div>
+      </div>
+      <div class="col-sm-2 modal-price"><strong class="d-sm-none">Price:</strong> {{ product.salePrice | currency: 'EUR' }}
+      </div>
+    </div>
+
+  </div>
+
+  <!--Modal Footer-->
+  <div class="my-footer">
+    <hr>
+    <a backButton class="btn btn-outline-primary d-block d-sm-inline float-sm-left my-2" 
+       (click)="modal.close('Save click')">
+       <i class="fa fa-chevron-left"></i> Continue shopping
+    </a>
+    <a class="btn btn-primary d-block d-sm-inline float-sm-right my-2" routerLink="/shopping-cart"
+       (click)="modal.close('Save click')">
+        Go to Shoopping Cart <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+
+</ng-template>
+

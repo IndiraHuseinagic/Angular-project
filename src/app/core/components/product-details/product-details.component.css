@@ -1,0 +1,57 @@
+/*************Favorite***************/
+.fa-heart, .fa-heart-o {
+    color: #ccc;
+    cursor: pointer;
+    background-color: transparent;
+} 
+
+/***************Price*****************/
+.price-text {
+    font-size: 30px;
+}
+
+.sale-price s{
+    color:#ccc;
+}
+
+.sale-price span{
+    color:#f00;
+}
+
+/***********Selected Size************/
+.selected {
+    border: 1px solid #fd3f33;
+}
+
+/***************Modal*****************/
+::ng-deep .modal-content {
+    width: 90vw;
+    border-radius: 0;
+    position: absolute;
+    top: 5vw;
+    left:5vw;
+}
+
+::ng-deep .modal-dialog {
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.info-text {
+    background-color: #ebf2e9;
+    font-style: italic;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-image {
+    width: 90%;
+    height: auto;
+}
+
+.my-footer {
+    padding: 15px;
+}
+
+
+

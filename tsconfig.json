@@ -2,7 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    //"baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -15,7 +15,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "shared/*": ["app/shared/*"],
+      "admin/*": ["app/admin/*"],
+      "shopping/*": ["app/shopping/*"],
+      "core/*": ["app/core/*"],
+      "layouts/*": ["app/core/*"],
+    } 
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false

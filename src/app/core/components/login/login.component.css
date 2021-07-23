@@ -1,0 +1,17 @@
+.google-image {
+    height: 20px;
+    width: 20px;
+}
+
+.btn-google {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 0;
+}
+
+.btn-google:hover ,
+.btn-google:active,
+.btn-google:focus {
+    border: 2px solid #000;
+}

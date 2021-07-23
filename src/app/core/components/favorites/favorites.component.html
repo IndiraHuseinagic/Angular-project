@@ -1,0 +1,9 @@
+<h1>Favorite Articles</h1>
+
+<p> Results: {{ (products$ | async)?.length }} products </p>
+
+<div class="row">
+  <div *ngFor="let product of products$ | async" class="col-6 col-md-3">
+    <product-card [product]="product" [favorites]="favorites"></product-card>
+  </div>
+</div>

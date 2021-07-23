@@ -1,0 +1,28 @@
+.card {
+    margin-bottom: 30px;
+    border: none;
+}
+
+/******************Favorite Icon*****************/
+.fa {
+color: #ccc;
+cursor: pointer;
+padding-top: 2px;
+font-size: 23px;
+}
+
+/*********************Sale**********************/
+.sale {
+    background-color:#FE5F55;
+    color: #fff; 
+    padding: 4px; 
+}
+
+.sale-price s{
+    color:#ccc;
+}
+
+.sale-price span{
+    color:#FE5F55;
+}
+

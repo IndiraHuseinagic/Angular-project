@@ -1,0 +1,89 @@
+<!--Big Image-->
+<a routerLink='/sale'>
+<div class="main-img mt-1">
+    <div class="main-img-text center">
+        <div class="text-1">SALE</div>
+        <div class="text-2">UP TO <span>50%</span> OFF </div>
+        <a class="btn btn-secondary mt-3" routerLink='/sale'>SHOP NOW</a>
+    </div>
+</div>
+</a>
+
+<!--Sale Products-->
+<h2 class="text-center mt-4">Special Offer</h2>
+<ngb-carousel [interval]="3000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+    <ng-template ngbSlide *ngFor="let slide of slides" class="row">
+        <div *ngFor="let product of slide">
+            <div class="col-6 col-md-3 float-left">
+                <product-card [product]="product"></product-card>
+            </div>
+        </div>
+    </ng-template>
+</ngb-carousel>
+
+<!--Collections-->
+<div class="row">
+    
+    <a routerLink='/category/women' class="col-lg-4 women-image mx-auto mb-3 text-center">
+        <a class="btn btn-outline-secondary btn-collection" routerLink='/category/women'>Women Shoes &gt;
+        </a>
+    </a>
+   
+    <a routerLink='/category/men' class="col-lg-4 men-image mx-auto mb-3 text-center">
+        <a class="btn btn-outline-secondary btn-collection" routerLink='/category/men'>Men Shoes &gt;
+        </a>
+    </a>
+    <a routerLink='category/kids' class="col-lg-4 kids-image mx-auto text-center">
+        <a class="btn btn-outline-secondary btn-collection" routerLink='category/kids'>Kids shoes &gt;
+        </a>
+    </a>
+</div>
+
+<!--Brands-->
+<div class="mt-4 text-center">
+    <brands></brands>
+</div>
+
+<!--Text-->
+<h4 class="mt-4 font-weight-bold">Easily buy shoes online</h4>
+<p>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+    sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+    magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+    quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+    ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+    dolor in hendrerit in vulputate velit esse molestie consequat,
+    vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et
+    iusto odio dignissim qui blandit praesent luptatum zzril delenit.
+</p>
+<h4 class="font-weight-bold">Large selection of popular Brands</h4>
+<p> 
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+    et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+    no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+    et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+    no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
+    ipsum dolor sit amet, consectetuer adipiscing elit,
+    sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+    magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+    quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+    ut aliquip ex ea commodo consequat.
+
+
+</p>
+<h4 class="font-weight-bold">Comfortable and fashionable shoes for everybody</h4>
+<p>
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+    et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+    no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua.
+</p>

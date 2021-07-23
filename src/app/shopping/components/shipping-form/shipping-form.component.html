@@ -1,0 +1,92 @@
+<a backButton class="back-nav"> &lt; Back</a>
+
+<h4 class="my-5"> Shipping Data </h4>
+
+<div class="row justify-content-center align-items-center no-gutters">
+  <div class="col-12 col-md-8">
+    <form #f="ngForm" (ngSubmit)="submitShipping()">
+
+      <!--First Name-->
+      <div class="form-group d-block">
+        <label for="firstName"> First Name <span class="star">*</span></label>
+        <input #firstName="ngModel" name="firstName" [(ngModel)]="shipping.firstName" type="text" class="form-control"
+          id="firstName" required>
+        <div class="alert" *ngIf="firstName.touched && firstName.invalid">
+          <div *ngIf="firstName.errors.required">Name is required.</div>
+        </div>
+      </div>
+
+      <!--Last Name-->
+      <div class="form-group">
+        <label for="lastName"> Last Name <span class="star">*</span></label>
+        <input #lastName="ngModel" name="lastName" [(ngModel)]="shipping.lastName" type="text" class="form-control"
+          id="lastName" required>
+        <div class="alert" *ngIf="lastName.touched && lastName.invalid">
+          <div *ngIf="lastName.errors.required">Last Name is required.</div>
+        </div>
+      </div>
+
+      <!--Country-->
+      <div class="form-group">
+        <label for="country"> Country <span class="star">*</span></label>
+        <input #country="ngModel" name="country" [(ngModel)]="shipping.country" type="text" class="form-control"
+          id="country" required>
+        <div class="alert" *ngIf="country.touched && country.invalid">
+          <div *ngIf="country.errors.required">Country is required.</div>
+        </div>
+      </div>
+
+      <!--Street/Number-->
+      <div class="row">
+        <div class="form-group col-8">
+          <label for="street"> Street <span class="star">*</span></label>
+          <input #street="ngModel" name="street" [(ngModel)]="shipping.street" type="text" class="form-control"
+            id="street" required>
+          <div class="alert" *ngIf="street.touched && street.invalid">
+            <div *ngIf="street.errors.required">Street is required.</div>
+          </div>
+        </div>
+        <div class="form-group col-4">
+          <label for="number"> No <span class="star">*</span></label>
+          <input #number="ngModel" name="number" [(ngModel)]="shipping.number" type="text" class="form-control"
+            id="number" required>
+          <div class="alert" *ngIf="number.touched && number.invalid">
+            <div *ngIf="number.errors.required">Number is required.</div>
+          </div>
+        </div>
+      </div>
+
+      <!--Zip/City-->
+      <div class="row">
+        <div class="form-group col-4">
+          <label for="zip"> Zip <span class="star">*</span></label>
+          <input #zip="ngModel" name="zip" [(ngModel)]="shipping.zip" type="text" class="form-control" id="zip"
+            required>
+          <div class="alert" *ngIf="zip.touched && zip.invalid">
+            <div *ngIf="zip.errors.required">Zip Code is required.</div>
+          </div>
+        </div>
+        <div class="form-group col-8">
+          <label for="city"> City <span class="star">*</span></label>
+          <input #city="ngModel" name="city" [(ngModel)]="shipping.city" type="text" class="form-control" id="city"
+            required>
+          <div class="alert" *ngIf="city.touched && city.invalid">
+            <div *ngIf="city.errors.required">City is required.</div>
+          </div>
+        </div>
+      </div>
+
+      <!--Phone-->
+      <div class="form-group">
+        <label for="phone"> Phone (optional) </label>
+        <input #phone="ngModel" name="phone" [(ngModel)]="shipping.phone" type="text" class="form-control" id="phone">
+      </div>
+      
+      <!--Submit-->
+      <div class="clearfix">
+        <button class="btn btn-primary mt-5" [disabled]="!f.valid">Submit Shipping Data
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<li *ngFor="let c of categories$ | async">
+   <a class="nav-link px-0" 
+      [routerLink]="['/category', c.key]" 
+      routerLinkActive="active"
+      queryParamsHandling="merge">{{ c.name }}
+   </a>
+</li>

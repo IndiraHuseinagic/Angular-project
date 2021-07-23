@@ -1,0 +1,209 @@
+/********************BUTTONS*********************/
+
+.btn-filter {    /*dropdown-filter*/
+    border: 2px solid #000;
+    border-radius: 0;
+    background-color: transparent;
+    color:#000; 
+    width:100%;
+    text-align:left;
+}
+
+.btn-filter-modal { /*Dropdown-filter-modal*/
+    border: 0;
+    background-color: transparent;
+    color:#000; 
+    width:100%; 
+    text-align: left;    
+}
+
+.btn-filter-toggle { /*btn Mobile Resolution*/
+    border: 2px solid #000;
+}
+
+.btn-sort {
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color:#000; 
+}
+
+.btn-sort:hover {
+    background-color: transparent;
+    border: 2px solid #000;
+} 
+
+.btn-delete { /*Delete Filter*/
+    border-radius: 0;
+    padding: 0;
+    margin: 0 10px 20px 0;
+}
+
+.btn-apply { /*Apply Filter*/
+    border-radius: 0;
+    width:90%;
+    margin: 5%;       
+ }
+
+/****************Dropdown dialog*****************/
+.list-scroll {
+    height: 40vh;
+    overflow: auto;
+}
+
+ div.dropdown-menu.show {
+    width:250px!important; 
+}
+
+/********************Arrows*********************/
+.fa-chevron-down, 
+.fa-chevron-up, 
+.fa-chevron-right {
+    color: #616161;
+}
+
+/******************CUSTOM MODAL ****************/
+.close {
+    font-size: 50px;
+    font-weight:300;
+}
+
+.mmodal-body .dropdown-menu.show {
+    margin-top: 30px;
+}
+
+.mmodal-footer .btn{
+    border-radius: 0;
+}
+
+.mmodal-body .dropdown-menu.show {
+    position: relative !important;
+    transform: translate(0px, 0px) !important;
+    width:100%;
+    border: 0;
+}
+
+/***************CUSTOM CHECKBOXES*****************/
+.form-check {
+    padding-left: 15px;
+}
+
+/* The container */
+.form-check .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+  
+/* Hide the browser's default checkbox */
+.form-check .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+  
+/* Create a custom checkbox */
+.form-check .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee; /*all others except color*/
+    border: 1px solid #616161;
+}
+
+/* On mouse-over, add a black border */
+.container:hover input ~ .checkmark {
+    border-color: #000;
+}
+  
+/* When the checkbox is checked, add a black background */
+.form-check .container input:checked ~ .checkmark {
+    background-color: #000;  /*za ostale, na za color*/
+}
+  
+/* Create the checkmark/indicator (hidden when not checked) */
+.form-check .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+/* Show the checkmark when checked */
+.form-check .container input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+/* Style the checkmark/indicator */
+.form-check .container .checkmark:after {
+    left: 8px;
+    top: 2px;
+    width: 8px;
+    height: 16px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Black Checkmark/indicator for white color */
+.form-check .container #white + .checkmark:after {
+    border: 1px solid #000;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* colored background of checkboxes for color filter */
+#white + .checkmark {
+    background-color: white;    
+}
+
+#black + .checkmark {
+    background-color: black;    
+}
+
+#red + .checkmark {
+    background-color: red;    
+}
+
+#green + .checkmark {
+    background-color: green;    
+}
+
+#blue + .checkmark {
+    background-color: blue;    
+}
+
+#grey + .checkmark {
+    background-color: grey;    
+}
+
+#yellow + .checkmark {
+    background-color: yellow;    
+}
+
+#orange + .checkmark {
+    background-color: orange;    
+}
+
+#pink + .checkmark {
+    background-color: pink;    
+}
+
+#gold + .checkmark {
+    background-color: gold;    
+}
+
+#multicolored + .checkmark {
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);    
+}

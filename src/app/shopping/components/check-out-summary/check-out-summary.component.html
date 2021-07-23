@@ -1,0 +1,26 @@
+<a backButton class="back-nav m-3"> &lt; Back</a>
+
+<ng-container *ngIf="{   user: user$ | async, 
+              cart: cart$ | async,
+          shipping: shipping$ | async, 
+           payment: payment$ | async} as order">
+
+   <ng-container *ngIf="order.user && order.cart && order.shipping && order.payment">
+
+      <h4 class="my-5">Your Order/<small>{{ order.user.displayName }} </small></h4>
+       
+      <!--Order details-->
+      <order-data 
+         [items]="order.cart.items" 
+         [totalPrice]="order.cart.totalPrice" 
+         [shipping]="order.shipping"
+         [payment]="order.payment">
+      </order-data>
+
+      <!--Order Now-->
+      <div class="clearfix mt-5">
+         <button (click)="orderProducts(order.user.uid, order.shipping, order.payment, order.cart)"
+            class="btn btn-primary d-block d-sm-inline float-sm-right">Order Now</button>
+      </div>
+   </ng-container>
+</ng-container>
